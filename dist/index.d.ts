@@ -1,5 +1,5 @@
 declare module 'linkedin-post-share/LinkedinPostShare' {
-  export class LinkedinPostShare {
+  export default class LinkedinPostShare {
       private accessToken;
       private LINKEDIN_BASE_URL;
       private LINKEDIN_VERSION;
@@ -60,7 +60,7 @@ declare module 'linkedin-post-share/LinkedinPostShare.types' {
 
 }
 declare module 'linkedin-post-share/index' {
-  export { LinkedinPostShare } from 'linkedin-post-share/LinkedinPostShare';
+  export { default as LinkedinPostShare } from 'linkedin-post-share/LinkedinPostShare';
 
 }
 declare module 'linkedin-post-share' {
