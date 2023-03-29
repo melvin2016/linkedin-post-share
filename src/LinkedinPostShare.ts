@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 // Types
 import type { Profile, ImageUpload } from './LinkedinPostShare.types';
 
-export default class LinkedinPostShare {
+export class LinkedinPostShare {
   private LINKEDIN_BASE_URL = 'https://api.linkedin.com';
   private LINKEDIN_VERSION = '202303';
   constructor(private accessToken: string) {}

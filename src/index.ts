@@ -1,1 +1,1 @@
-export { default as LinkedinPostShare } from './LinkedinPostShare';
+export { LinkedinPostShare } from './LinkedinPostShare';

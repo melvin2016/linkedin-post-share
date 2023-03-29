@@ -18,11 +18,11 @@ build({
   ...sharedConfig,
   platform: 'node', // for CJS
   outfile: 'dist/index.js',
-});
+}).catch(() => process.exit(1));
 
 build({
   ...sharedConfig,
   outfile: 'dist/index.esm.js',
   platform: 'neutral', // for ESM
   format: 'esm',
-});
+}).catch(() => process.exit(1));
