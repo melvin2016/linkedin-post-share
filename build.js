@@ -17,12 +17,12 @@ const sharedConfig = {
 build({
   ...sharedConfig,
   platform: 'node', // for CJS
-  outfile: 'dist/index.js',
+  outfile: 'dist/index.cjs',
 }).catch(() => process.exit(1));
 
 build({
   ...sharedConfig,
-  outfile: 'dist/index.esm.js',
+  outfile: 'dist/index.js',
   platform: 'neutral', // for ESM
   format: 'esm',
 }).catch(() => process.exit(1));

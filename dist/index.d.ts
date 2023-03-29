@@ -1,4 +1,4 @@
-declare module 'linkedin-post-share/LinkedinPostShare' {
+declare module 'linkedin-post-share/index' {
   export default class LinkedinPostShare {
       private accessToken;
       private LINKEDIN_BASE_URL;
@@ -12,7 +12,7 @@ declare module 'linkedin-post-share/LinkedinPostShare' {
   }
 
 }
-declare module 'linkedin-post-share/LinkedinPostShare.types' {
+declare module 'linkedin-post-share/index.types' {
   export type Profile = {
       firstName: {
           localized: {
@@ -57,10 +57,6 @@ declare module 'linkedin-post-share/LinkedinPostShare.types' {
           image: string;
       };
   };
-
-}
-declare module 'linkedin-post-share/index' {
-  export { default as LinkedinPostShare } from 'linkedin-post-share/LinkedinPostShare';
 
 }
 declare module 'linkedin-post-share' {
