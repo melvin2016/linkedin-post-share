@@ -1,4 +1,4 @@
-declare module 'linkedin-post-share/index' {
+declare module 'linkedin-post-share/LinkedinPostShare' {
   export default class LinkedinPostShare {
       private accessToken;
       private LINKEDIN_BASE_URL;
@@ -10,6 +10,57 @@ declare module 'linkedin-post-share/index' {
       private uploadImage;
       createPostWithImage(post: string, image: Blob, imageAlt?: string): Promise<boolean | undefined>;
   }
+
+}
+declare module 'linkedin-post-share/LinkedinPostShare.types' {
+  export type Profile = {
+      firstName: {
+          localized: {
+              en_US: string;
+          };
+          preferredLocale: {
+              country: string;
+              language: string;
+          };
+      };
+      localizedFirstName: string;
+      headline: {
+          localized: {
+              en_US: string;
+          };
+          preferredLocale: {
+              country: string;
+              language: string;
+          };
+      };
+      localizedHeadline: string;
+      vanityName: string;
+      id: string;
+      lastName: {
+          localized: {
+              en_US: string;
+          };
+          preferredLocale: {
+              country: string;
+              language: string;
+          };
+      };
+      localizedLastName: string;
+      profilePicture: {
+          displayImage: string;
+      };
+  };
+  export type ImageUpload = {
+      value: {
+          uploadUrlExpiresAt: number;
+          uploadUrl: string;
+          image: string;
+      };
+  };
+
+}
+declare module 'linkedin-post-share/index' {
+  export { default as LinkedinPostShare } from 'linkedin-post-share/LinkedinPostShare';
 
 }
 declare module 'linkedin-post-share' {
