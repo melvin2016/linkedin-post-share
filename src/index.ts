@@ -65,7 +65,6 @@ export default class LinkedinPostShare {
   }
 
   private async uploadImage(image: Buffer, uploadUrl: string) {
-    const imageBlob = new Blob([image]);
     try {
       const imageUploadRequest = await axios(uploadUrl, {
         method: 'PUT',
@@ -73,7 +72,7 @@ export default class LinkedinPostShare {
           'Content-Type': 'application/octet-stream',
           Authorization: `Bearer ${this.accessToken}`,
         },
-        data: imageBlob,
+        data: image,
       });
       if (imageUploadRequest.status !== 201) {
         console.error('Image not created. Status code: ', imageUploadRequest.status);
