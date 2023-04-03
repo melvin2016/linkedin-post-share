@@ -3,12 +3,12 @@ const { dependencies, peerDependencies } = require('./package.json');
 const { Generator } = require('npm-dts');
 
 new Generator({
-  entry: 'src/index.ts',
-  output: 'dist/index.d.ts',
+  entry: 'src/LinkedinPostShare.ts',
+  output: 'dist/LinkedinPostShare.d.ts',
 }).generate();
 
 const sharedConfig = {
-  entryPoints: ['src/index.ts'],
+  entryPoints: ['src/LinkedinPostShare.ts'],
   bundle: true,
   minify: true,
   external: Object.keys(dependencies).concat(Object.keys(peerDependencies)),
@@ -17,12 +17,12 @@ const sharedConfig = {
 build({
   ...sharedConfig,
   platform: 'node', // for CJS
-  outfile: 'dist/index.cjs',
+  outfile: 'dist/LinkedinPostShare.cjs',
 }).catch(() => process.exit(1));
 
 build({
   ...sharedConfig,
-  outfile: 'dist/index.js',
+  outfile: 'dist/LinkedinPostShare.js',
   platform: 'neutral', // for ESM
   format: 'esm',
 }).catch(() => process.exit(1));
