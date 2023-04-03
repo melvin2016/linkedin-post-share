@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios';
+import Blob from 'cross-blob';
 
 // Types
 import type { Profile, ImageUpload } from './index.d';

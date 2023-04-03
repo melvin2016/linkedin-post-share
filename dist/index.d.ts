@@ -1,3 +1,4 @@
+import Blob from 'cross-blob';
 export default class LinkedinPostShare {
     private accessToken;
     private LINKEDIN_BASE_URL;
