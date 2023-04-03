@@ -129,6 +129,7 @@ export default class LinkedinPostShare {
         lifecycleState: 'PUBLISHED',
         isReshareDisabledByAuthor: false,
       };
+      console.log(postData);
 
       const data = await axios(`${this.LINKEDIN_BASE_URL}/rest/posts`, {
         method: 'POST',
