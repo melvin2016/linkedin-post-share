@@ -1,4 +1,4 @@
-import Blob from 'cross-blob';
+/// <reference types="node" />
 export default class LinkedinPostShare {
     private accessToken;
     private LINKEDIN_BASE_URL;
@@ -8,5 +8,5 @@ export default class LinkedinPostShare {
     getPersonURN(): Promise<string | null>;
     private createImageUploadRequest;
     private uploadImage;
-    createPostWithImage(post: string, image: Blob, imageAlt?: string): Promise<boolean | undefined>;
+    createPostWithImage(post: string, image: Buffer, imageAlt?: string): Promise<boolean | undefined>;
 }
