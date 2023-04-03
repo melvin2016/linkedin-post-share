@@ -21,8 +21,8 @@ import LinkedinPostShare from "linkedin-post-share";
 const accessToken = "<your access token>";
 
 const post = "This is my post content";
-// Blob object representing the image
-const image = await fetch("https://example.com/some-image.jpeg").then((response) => response.blob()); ;
+// Buffer representing the image
+const image = await fetch("https://example.com/some-image.jpeg").then((response) => response.buffer()); ;
 const imageAlt = "Alternative text for the image";
 
 const linkedinPostShare = new LinkedinPostShare(accessToken);
@@ -39,11 +39,11 @@ if (result) {
 
 The main class of the package. Takes an access token for the LinkedIn API as an argument.
 
-- `createPostWithImage(post: string, image: Blob, imageAlt?: string): Promise<boolean>`
+- `createPostWithImage(post: string, image: Buffer, imageAlt?: string): Promise<boolean>`
 Creates a post on LinkedIn with an image. Returns a Promise that resolves to true if the post was shared successfully, or false otherwise.
 
     - post - The text of the post.
-    - image - A Blob object representing the image to be shared.
+    - image - A Buffer.
     - imageAlt - Optional alternative text for the image. If not provided, a default value will be used.
 
 ### Contributing

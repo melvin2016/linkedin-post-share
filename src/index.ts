@@ -65,7 +65,8 @@ export default class LinkedinPostShare {
     }
   }
 
-  private async uploadImage(image: Blob, uploadUrl: string) {
+  private async uploadImage(image: Buffer, uploadUrl: string) {
+    const imageBlob = new Blob([image]);
     try {
       const imageUploadRequest = await axios(uploadUrl, {
         method: 'PUT',
@@ -73,7 +74,7 @@ export default class LinkedinPostShare {
           'Content-Type': 'application/octet-stream',
           Authorization: `Bearer ${this.accessToken}`,
         },
-        data: image,
+        data: imageBlob,
       });
       if (imageUploadRequest.status !== 201) {
         console.error('Image not created. Status code: ', imageUploadRequest.status);
@@ -90,7 +91,7 @@ export default class LinkedinPostShare {
     }
   }
 
-  async createPostWithImage(post: string, image: Blob, imageAlt?: string) {
+  async createPostWithImage(post: string, image: Buffer, imageAlt?: string) {
     const personUrn = await this.getPersonURN();
     if (!personUrn) {
       console.error('Cannot get person URN');
