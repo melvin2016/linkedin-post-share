@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
 // Types
-import type { Profile, ImageUpload } from './LinkedinPostShare.types';
+import type { Profile, ImageUpload } from './index.d';
 
 export default class LinkedinPostShare {
   private LINKEDIN_BASE_URL = 'https://api.linkedin.com';

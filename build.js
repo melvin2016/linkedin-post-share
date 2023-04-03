@@ -1,28 +1,22 @@
 const { build } = require('esbuild');
-const { dependencies, peerDependencies } = require('./package.json');
-const { Generator } = require('npm-dts');
-
-new Generator({
-  entry: 'src/LinkedinPostShare.ts',
-  output: 'dist/LinkedinPostShare.d.ts',
-}).generate();
+const { dependencies } = require('./package.json');
 
 const sharedConfig = {
-  entryPoints: ['src/LinkedinPostShare.ts'],
+  entryPoints: ['./src/index.ts'],
   bundle: true,
   minify: true,
-  external: Object.keys(dependencies).concat(Object.keys(peerDependencies)),
+  external: Object.keys(dependencies),
 };
 
 build({
   ...sharedConfig,
   platform: 'node', // for CJS
-  outfile: 'dist/LinkedinPostShare.cjs',
+  outfile: './dist/index.cjs',
 }).catch(() => process.exit(1));
 
 build({
   ...sharedConfig,
-  outfile: 'dist/LinkedinPostShare.js',
+  outfile: './dist/index.js',
   platform: 'neutral', // for ESM
   format: 'esm',
 }).catch(() => process.exit(1));
