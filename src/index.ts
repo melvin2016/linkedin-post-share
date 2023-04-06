@@ -89,6 +89,10 @@ export default class LinkedinPostShare {
     }
   }
 
+  private removeLinkedinReservedCharacters(text: string) {
+    return text.replace(/[|{}@\[\]()<>\\*_~+]/gm, '');
+  }
+
   async createPostWithImage(post: string, image: Buffer, imageAlt?: string) {
     const personUrn = await this.getPersonURN();
     if (!personUrn) {
@@ -109,11 +113,12 @@ export default class LinkedinPostShare {
     }
 
     const imageId = imageUploadRequest.value.image;
+    const reservedCharactersRemovedPost = this.removeLinkedinReservedCharacters(post);
 
     try {
       const postData = {
         author: personUrn,
-        commentary: post,
+        commentary: reservedCharactersRemovedPost,
         visibility: 'PUBLIC',
         distribution: {
           feedDistribution: 'MAIN_FEED',
@@ -129,7 +134,6 @@ export default class LinkedinPostShare {
         lifecycleState: 'PUBLISHED',
         isReshareDisabledByAuthor: false,
       };
-      console.log(postData);
 
       const data = await axios(`${this.LINKEDIN_BASE_URL}/rest/posts`, {
         method: 'POST',

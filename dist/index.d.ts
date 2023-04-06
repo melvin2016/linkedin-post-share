@@ -8,5 +8,6 @@ export default class LinkedinPostShare {
     getPersonURN(): Promise<string | null>;
     private createImageUploadRequest;
     private uploadImage;
+    private removeLinkedinReservedCharacters;
     createPostWithImage(post: string, image: Buffer, imageAlt?: string): Promise<boolean | undefined>;
 }
