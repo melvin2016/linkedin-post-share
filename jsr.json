@@ -1,0 +1,5 @@
+{
+    "name": "@melvingeorge/linkedin-post-share",
+    "version": "0.1.0",
+    "exports": "./src/index.ts"
+}

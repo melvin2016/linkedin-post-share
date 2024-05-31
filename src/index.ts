@@ -8,7 +8,7 @@ export default class LinkedinPostShare {
   private LINKEDIN_VERSION = '202303';
   constructor(private accessToken: string) {}
 
-  private async getProfileData() {
+  private async getProfileData(): Promise<Profile | null> {
     try {
       const profileData = await axios<Profile>(`${this.LINKEDIN_BASE_URL}/v2/me`, {
         method: 'GET',
@@ -27,7 +27,7 @@ export default class LinkedinPostShare {
     }
   }
 
-  async getPersonURN() {
+  async getPersonURN(): Promise<string | null> {
     const profile = await this.getProfileData();
     if (!profile || !profile.id) {
       return null;
@@ -36,7 +36,7 @@ export default class LinkedinPostShare {
     return urnTemplate;
   }
 
-  private async createImageUploadRequest(personUrn: string) {
+  private async createImageUploadRequest(personUrn: string): Promise<ImageUpload | undefined> {
     try {
       const imageUploadRequest = await axios<ImageUpload>(
         `${this.LINKEDIN_BASE_URL}/rest/images?action=initializeUpload`,
@@ -64,7 +64,7 @@ export default class LinkedinPostShare {
     }
   }
 
-  private async uploadImage(image: Buffer, uploadUrl: string) {
+  private async uploadImage(image: Buffer, uploadUrl: string): Promise<boolean | undefined> {
     try {
       const imageUploadRequest = await axios(uploadUrl, {
         method: 'PUT',
@@ -89,11 +89,11 @@ export default class LinkedinPostShare {
     }
   }
 
-  private removeLinkedinReservedCharacters(text: string) {
+  private removeLinkedinReservedCharacters(text: string): string {
     return text.replace(/[|{}@\[\]()<>\\*_~+]/gm, '');
   }
 
-  async createPostWithImage(post: string, image: Buffer, imageAlt?: string) {
+  async createPostWithImage(post: string, image: Buffer, imageAlt?: string): Promise<boolean | undefined> {
     const personUrn = await this.getPersonURN();
     if (!personUrn) {
       console.error('Cannot get person URN');
